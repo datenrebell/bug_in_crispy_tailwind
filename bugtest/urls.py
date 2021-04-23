@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from bug.views import BugUpdateView
+from django.views.generic.base import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('<int:pk>/update/', BugUpdateView.as_view(), name='update'),
+    path('', RedirectView.as_view(url='1/update/'), name='redirect'),
 ]
